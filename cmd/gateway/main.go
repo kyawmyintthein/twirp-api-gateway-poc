@@ -55,12 +55,16 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 
 	//backendFactory := martian.NewBackendFactory(logger, client.DefaultHTTPRequestExecutor(client.NewHTTPClient))
-	colorLuraClient, err := color.NewColorServiceLuraClient(&serviceConfig, "rpc.color.ColorService", &http.Client{}, logger, twirp.WithClientPathPrefix("rz"))
+	colorLuraClient, err := color.NewColorServiceLuraClient(&serviceConfig, "rpc.color.ColorService", &http.Client{
+		Transport: transport2(),
+	}, logger, twirp.WithClientPathPrefix("rz"))
 	if err != nil {
 		panic(err)
 	}
 
-	numberLuraClient, err := number.NewNumberServiceLuraClient(&serviceConfig, "rpc.number.NumberService", &http.Client{}, logger, twirp.WithClientPathPrefix("rz"))
+	numberLuraClient, err := number.NewNumberServiceLuraClient(&serviceConfig, "rpc.number.NumberService", &http.Client{
+		Transport: transport2(),
+	}, logger, twirp.WithClientPathPrefix("rz"))
 	if err != nil {
 		panic(err)
 	}
@@ -92,7 +96,7 @@ func transport2() *http2.Transport {
 }
 
 func tlsConfig() *tls.Config {
-	crt, err := ioutil.ReadFile("./server.crt")
+	crt, err := ioutil.ReadFile("../../server.crt")
 	if err != nil {
 		log.Fatal(err)
 	}

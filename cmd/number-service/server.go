@@ -27,13 +27,13 @@ func main() {
 		Addr:         ":" + getServerPort(),
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
-		// TLSConfig:    tlsConfig(),
-		ConnState: cw.OnStateChange,
+		TLSConfig:    tlsConfig(),
+		ConnState:    cw.OnStateChange,
 	}
 	httpServer.Handler = twirpHandler
 	go func() {
-		//err := httpServer.ListenAndServeTLS("../../server.crt", "../../server.key")
-		err := httpServer.ListenAndServe()
+		err := httpServer.ListenAndServeTLS("../../server.crt", "../../server.key")
+		//err := httpServer.ListenAndServe()
 		if err != nil {
 			os.Exit(-1)
 		}

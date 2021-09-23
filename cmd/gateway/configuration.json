@@ -47,7 +47,7 @@
                     }
                 },
                 "host": [
-                    "http://localhost:8081"
+                    "https://localhost:8081"
                 ],
                 "disable_host_sanitize": true
             }]
@@ -73,7 +73,7 @@
                     "twirp_service_identifier": "rpc.color.ColorService"
                 },
                 "host": [
-                    "http://localhost:8081"
+                    "https://localhost:8081"
                 ],
                 "disable_host_sanitize": true
             }]
@@ -100,7 +100,7 @@
                     "twirp_service_identifier": "rpc.number.NumberService"
                 },
                 "host": [
-                    "http://localhost:8082"
+                    "https://localhost:8082"
                 ],
                 "disable_host_sanitize": true
             }]
