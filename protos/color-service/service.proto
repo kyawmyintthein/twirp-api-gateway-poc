@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package rpc.color;
+
+option go_package = "rpc/color";
+
+service ColorService {
+  rpc GetRandomColor(GetRandomColorRequest) returns (GetRandomColorResp);
+  rpc GetRGBColor(GetRGBColorRequest) returns (GetRGBColorResp);
+}
+
+message GetRandomColorRequest {
+    int64 count = 1;
+} 
+
+message GetRandomColorResp {
+  repeated string colors = 1;
+}
+
+message GetRGBColorRequest {
+    string name = 1;
+} 
+
+message GetRGBColorResp {
+    int64 red = 1;
+    int64 green = 2;
+    int64 blue = 3;
+}

@@ -1,0 +1,109 @@
+{
+    "version": 2,
+    "timeout": "3000ms",
+    "cache_ttl": "300s",
+    "debug": true,
+    "port": 8000,
+    "extra_config": {
+        "github_com/devopsfaith/krakend-gologging": {
+            "level": "DEBUG",
+            "prefix": "[KRAKEND]",
+            "syslog": false,
+            "stdout": true,
+            "format": "logstash"
+        },
+        "github_com/devopsfaith/krakend-logstash": {
+            "enabled": true
+        }
+    },
+    "endpoints": [{
+            "endpoint": "/color/{count}/random",
+            "method": "GET",
+            "output_encoding": "json",
+            "querystring_params": [
+                "*"
+            ],
+            "headers_to_pass": [
+                "*"
+            ],
+            "extra_config": {
+                "twirp_service_identifier": "rpc.color.ColorService"
+            },
+            "backend": [{
+                "url_pattern": "/rpc.color.ColorService/GetRandomColor?count={count}",
+                "encoding": "json",
+                "sd": "custom",
+                "method": "GetRandomColor",
+                "extra_config": {
+                    "twirp_service_identifier": "rpc.color.ColorService",
+                    "github.com/kyawmyintthein/lura-twirp/martian": {
+                        "body.FromQueryString": {
+                            "keys_to_extract": [
+                                "count"
+                            ],
+                            "template": "{\"count\":{{index .count 0}}}",
+                            "method": "POST"
+                        }
+                    }
+                },
+                "host": [
+                    "http://localhost:8081"
+                ],
+                "disable_host_sanitize": true
+            }]
+        }, {
+            "endpoint": "/color/rgb",
+            "method": "POST",
+            "output_encoding": "json",
+            "querystring_params": [
+                "*"
+            ],
+            "headers_to_pass": [
+                "*"
+            ],
+            "extra_config": {
+                "twirp_service_identifier": "rpc.color.ColorService"
+            },
+            "backend": [{
+                "url_pattern": "/rpc.color.ColorService/GetRGBColor",
+                "encoding": "json",
+                "sd": "custom",
+                "method": "GetRGBColor",
+                "extra_config": {
+                    "twirp_service_identifier": "rpc.color.ColorService"
+                },
+                "host": [
+                    "http://localhost:8081"
+                ],
+                "disable_host_sanitize": true
+            }]
+        },
+        {
+            "endpoint": "/number/add",
+            "method": "POST",
+            "output_encoding": "json",
+            "querystring_params": [
+                "*"
+            ],
+            "headers_to_pass": [
+                "*"
+            ],
+            "extra_config": {
+                "twirp_service_identifier": "rpc.number.NumberService"
+            },
+            "backend": [{
+                "url_pattern": "/rpc.number.NumberService/Add",
+                "encoding": "json",
+                "sd": "custom",
+                "method": "Add",
+                "extra_config": {
+                    "twirp_service_identifier": "rpc.number.NumberService"
+                },
+                "host": [
+                    "http://localhost:8082"
+                ],
+                "disable_host_sanitize": true
+            }]
+        }
+    ]
+}

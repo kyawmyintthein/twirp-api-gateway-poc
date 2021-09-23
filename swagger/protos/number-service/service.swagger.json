@@ -1,0 +1,69 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "protos/number-service/service.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/twirp/rpc.number.NumberService/Add": {
+      "post": {
+        "operationId": "Add",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/numberAddResultResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/numberAddNumberRequest"
+            }
+          }
+        ],
+        "tags": [
+          "NumberService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "numberAddNumberRequest": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "type": "string",
+          "format": "int64"
+        },
+        "b": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "numberAddResultResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}
