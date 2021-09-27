@@ -129,6 +129,7 @@ github.com/kyawmyintthein/lura-twirp v0.0.11 h1:lVrnvxc0sGkLaOAwbIN6N3Fx/aqLfRrS
 github.com/kyawmyintthein/lura-twirp v0.0.11/go.mod h1:yCkqiCg51h34oJDupgAWm8kgDPCSkizbk7/kNd9wjGs=
 github.com/kyawmyintthein/lura-twirp v0.0.13 h1:QeSa5Ud4RZOvmpPLdQXe8sDiGSdL7wN9+M+JwtiLLvA=
 github.com/kyawmyintthein/lura-twirp v0.0.13/go.mod h1:yCkqiCg51h34oJDupgAWm8kgDPCSkizbk7/kNd9wjGs=
+github.com/kyawmyintthein/lura-twirp v0.0.14/go.mod h1:yCkqiCg51h34oJDupgAWm8kgDPCSkizbk7/kNd9wjGs=
 github.com/leodido/go-urn v1.2.0/go.mod h1:+8+nEpDfqqsY+g338gtMEUOtuK+4dEMhiQEgxpxOKII=
 github.com/luraproject/lura v1.4.0/go.mod h1:KIo1/+nsRZVxIO04Hkbth0GXSSzypvkFpF5KaIoLvlo=
 github.com/luraproject/lura v1.4.1 h1:zNzLYMzM13EaSrb9bfaPICD4bXtNqMCdyi42R1eBgro=
